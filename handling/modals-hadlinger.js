@@ -1,0 +1,47 @@
+const { fs, path } = require('../bot-tools/fileManager');
+
+const modals_Handler = (client, Collection) => {
+    client.modalsMenu = new Collection();
+
+    const modalPaths = path.join(__dirname, '../commands/slash-commands/');
+    const modalsDirs = fs.readdirSync(modalPaths);
+    const paths = [];
+
+    for (const dirs of modalsDirs) {
+        const dirsOf = path.join(modalPaths, dirs);
+        paths.push(dirsOf);
+    }
+
+    for (const dirPath of paths) {
+        const modals = fs.readdirSync(dirPath).filter(filter => filter.match('modal-menu'));
+
+        for (const modal of modals) {
+            const filesPath = path.join(dirPath, modal);
+            const files = fs.readdirSync(filesPath).filter(filter => filter.endsWith('.js'));
+
+            for (const file of files) {
+                const filesOf = path.join(filesPath, file);
+                const modalMenu = require(filesOf);
+
+                client.modalsMenu.set(modalMenu.id, modalMenu);
+            }
+        }
+    }
+
+    client.on('interactionCreate', async interaction => {
+        if (!interaction.isModalSubmit()) return;
+
+        const modals = client.modalsMenu.get(interaction.customId);
+
+        if (!modals) return;
+
+        try {
+            await modals.execute(interaction);
+        } catch (error) {
+            console.error(error);
+            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+        }
+    });
+};
+
+module.exports = { modals_Handler };
