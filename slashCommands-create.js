@@ -5,7 +5,7 @@ const { REST } = require('@discordjs/rest');
 
 const commandsJSON = [];
 
-const commandsPath = path.join(__dirname, './commands/slash-commands/');
+const commandsPath = path.join(__dirname, './commands/');
 const commandsDirs = fs.readdirSync(commandsPath);
 const paths = [];
 

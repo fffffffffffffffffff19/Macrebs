@@ -1,9 +1,10 @@
 const { fs, path } = require('../bot-tools/fileManager');
 
 const modals_Handler = (client, Collection) => {
+
     client.modalsMenu = new Collection();
 
-    const modalPaths = path.join(__dirname, '../commands/slash-commands/');
+    const modalPaths = path.join(__dirname, '../commands/');
     const modalsDirs = fs.readdirSync(modalPaths);
     const paths = [];
 

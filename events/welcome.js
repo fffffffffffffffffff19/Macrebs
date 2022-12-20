@@ -4,7 +4,6 @@ const { userApi } = require('../api-references/userAPI');
 module.exports = {
 	name: 'guildMemberAdd',
 	async execute(member) {
-		return
 		const icon = await member.user.displayAvatarURL({ dynamic: true, size: 4096 });
 		const memberID = await member.id;
 		const memberName = await member.displayName;

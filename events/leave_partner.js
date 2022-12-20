@@ -1,10 +1,9 @@
 const { partnerDB, msgPartnerDB } = require('../database/db');
-const { PartnerLeave } = require('../commands/slash-commands/new-partner/embeds/partner_Embed');
+const { PartnerLeave } = require('../commands/new-partner/embeds/partner_Embed');
 
 module.exports = {
     name: 'guildMemberRemove',
     async execute(user) {
-        return
         const partnerChannel = await user.guild.channels.cache.get('920753297676198010');
         const exit_Log = await user.guild.channels.cache.get('998624881816129597');
         await partnerDB.findOne({ where: { User_ID: user.id } }).then(async User => {

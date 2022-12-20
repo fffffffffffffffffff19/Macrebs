@@ -1,9 +1,10 @@
 const { fs, path } = require('../bot-tools/fileManager');
 
 const buttons_Handler = (client, Collection) => {
+
     client.buttonsfiles = new Collection();
 
-    const buttonsPaths = path.join(__dirname, '../commands/slash-commands/');
+    const buttonsPaths = path.join(__dirname, '../commands/');
     const buttonsDirs = fs.readdirSync(buttonsPaths);
     const paths = [];
 

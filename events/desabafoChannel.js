@@ -2,7 +2,6 @@ module.exports = {
     name: 'messageCreate',
     once: false,
     async execute(msg) {
-        return
         if (msg.channelId != '1051633625159962674') return
 
         await msg.startThread({

@@ -1,5 +1,5 @@
 const { vipStatusDB } = require('../database/db');
-const { VipExpired } = require('../commands/slash-commands/setvip/embeds/setvip_Embed');
+const { VipExpired } = require('../commands/setvip/embeds/setvip_Embed');
 const { timeMonth } = require('../bot-tools/time');
 const { guildId } = require('../config');
 
@@ -7,7 +7,6 @@ module.exports = {
     name: 'ready',
     once: true,
     async execute(client) {
-        return
         setInterval(async () => {
             await vipStatusDB.findAll({ where: { Time_Expired: timeMonth().timeNow } }).then(async Time => {
                 for (const db of Time) {

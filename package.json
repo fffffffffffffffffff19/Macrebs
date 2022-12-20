@@ -4,7 +4,8 @@
   "description": "A oficial Macrebs server discord bot.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cls && node app.js"
   },
   "author": "Schiavon",
   "license": "ISC",

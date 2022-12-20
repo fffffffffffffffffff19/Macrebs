@@ -8,7 +8,7 @@ const selectedMenu_Handler = (client, Collection) => {
 
     const commandDelay = new Set();
     const list = ['denuncia_Menu', 'ajuda_Menu', 'duvida_Menu', 'resgatar_Menu'];
-    const menusPaths = path.join(__dirname, '../commands/slash-commands/');
+    const menusPaths = path.join(__dirname, '../commands/');
     const menusDirs = fs.readdirSync(menusPaths);
     const paths = [];
 

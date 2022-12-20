@@ -1,5 +1,5 @@
 const { partnerDB, msgPartnerDB } = require('../database/db');
-const { PartnerExpired } = require('../commands/slash-commands/new-partner/embeds/partner_Embed');
+const { PartnerExpired } = require('../commands/new-partner/embeds/partner_Embed');
 const { timeWeek } = require('../bot-tools/time');
 const { guildId } = require('../config');
 
@@ -7,7 +7,6 @@ module.exports = {
     name: 'ready',
     once: true,
     async execute(client) {
-        return
         setInterval(async () => {
             await partnerDB.findAll({ where: { Time_Expired: timeWeek().timeNow } }).then(async dbData => {
                 for (const db of dbData) {
