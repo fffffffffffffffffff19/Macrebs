@@ -1,4 +1,4 @@
-const { partnerDB, msgPartnerDB, vipStatusDB } = require('../../_discord.js/database/db');
+const { partnerDB, msgPartnerDB, vipStatusDB } = require('../database/db');
 
 module.exports = {
     name: 'ready',
