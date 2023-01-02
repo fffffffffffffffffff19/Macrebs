@@ -5,7 +5,7 @@ module.exports = {
     id: 'denuncia_Menu',
     async execute(interaction) {
         const moderacaoRole = await interaction.guild.roles.cache.get('936600289539145751');
-        const channel = await interaction.guild.channels.cache.get('960641940125261874');
+        const channel = await interaction.guild.channels.cache.get('1019077752390942792');  // mainChannel: 1019077752390942792 / setupChannel: 960641940125261874
         const ping = `<@&${moderacaoRole.id}>`
         const panelButtons = new ActionRowBuilder().addComponents(new ButtonBuilder()
             .setCustomId('cancel_Ticket')

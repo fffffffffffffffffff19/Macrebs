@@ -5,7 +5,7 @@ module.exports = {
     id: 'duvida_Menu',
     async execute(interaction) {
         const ajudanteRole = await interaction.guild.roles.cache.get('1019624528575463424');
-        const channel = await interaction.guild.channels.cache.get('960641940125261874');
+        const channel = await interaction.guild.channels.cache.get('1019077752390942792');   // mainChannel: 1019077752390942792 / setupChannel: 960641940125261874
         const ping = `<@&${ajudanteRole.id}>`
         const panelButtons = new ActionRowBuilder().addComponents(new ButtonBuilder()
             .setCustomId('cancel_Ticket')
