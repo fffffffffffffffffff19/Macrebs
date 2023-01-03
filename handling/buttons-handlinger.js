@@ -39,7 +39,7 @@ const buttons_Handler = (client, Collection) => {
 
         if (!buttons) return;
 
-        const values = await interaction.values[0];
+        const values = await interaction.customId;
         let validation = false;
         
         for (const value of list) {
