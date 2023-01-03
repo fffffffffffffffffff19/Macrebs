@@ -1,5 +1,5 @@
 module.exports = {
-    id: 'miniGame_Menu',
+    id: 'game_Menu',
     async execute(interaction) {
         const hideRole = await interaction.guild.roles.cache.find(role => role.id == '1041139809021874216');
         const separatorRole = await interaction.guild.roles.cache.find(role => role.id == '1019779338792599622');
