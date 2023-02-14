@@ -1,7 +1,8 @@
-const { clientId, guildId, token } = require('./config');
-const { fs, path } = require('./bot-tools/fileManager');
 const { Routes } = require('discord.js');
 const { REST } = require('@discordjs/rest');
+const fs = require('node:fs');
+const path = require('node:path');
+const { clientId, guildId, token } = require('./config');
 
 const commandsJSON = [];
 
@@ -16,7 +17,7 @@ for (const dirs of commandsDirs) {
 }
 
 for (const files of paths) {
-    const commands = fs.readdirSync(files).filter(filter => filter.endsWith('.js'));
+    const commands = fs.readdirSync(files).filter((filter) => filter.endsWith('.js'));
 
     for (const file of commands) {
         const fileOf = path.join(files, file);

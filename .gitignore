@@ -1,8 +1,8 @@
 node_modules
 .env
 database.sqlite
-deveras.js
 off
 _teste
 _off
-todo.txt
+.eslintrc.json
+teste.js
