@@ -10,13 +10,13 @@ module.exports = {
         const memberDisplayName = await member.displayName;
         const guildId = await member.guild.id;
         const guildSize = await member.guild.memberCount;
-        const channel = await member.guild.channels.cache.get('1019078936208089178');
+        const channel = await member.guild.channels.cache.get('889552544311943168');
         const staffRole = '<@&936599914014720041>';
         // const time = Math.floor(new Date().getTime('-3:00') / 1000.0);   timestamp system
         // const epoch = `<t:${time}:R>`;
 
         if (guildId !== '889320497244962826') return;
-        if (await member.user.bot) return;
+        // if (await member.user.bot) return;
 
         const oldDB = await joinedRecently.findOne({ where: { memberId: memberID } });
 
