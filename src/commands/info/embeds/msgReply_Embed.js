@@ -1,4 +1,4 @@
-const { footerIcon, footerText } = require('../../../../embeds/footer');
+const { footerIcon, footerText } = require('../../../embeds/footer');
 
 module.exports = {
     sugestaoReplyEmbed: () => ({

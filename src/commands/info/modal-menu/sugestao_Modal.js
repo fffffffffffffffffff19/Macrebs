@@ -4,7 +4,8 @@ module.exports = {
     id: 'sugestao_Modal',
     async execute(interaction) {
         const user = await interaction.user.id;
-        const time = new Date().toDateString();
+        const time = Math.floor(new Date().getTime('-3:00') / 1000.0);
+        const epoch = `<t:${time}:R>`;
         const channel = await interaction.guild.channels.cache.get('1014569119955292251');
         const title = await interaction.fields.getTextInputValue('title-sugestao');
         const sugestao = await interaction.fields.getTextInputValue('sugestao');
@@ -12,7 +13,7 @@ module.exports = {
         const webhooks = await channel.fetchWebhooks();
         const webhook = await webhooks.first();
 
-        await channel.send({ content: `Sugestão enviada por: <@${user}>\nData de envio: \`${time}\``, embeds: [sugestaoSendingEmbed(title, sugestao)] })
+        await channel.send({ content: `Sugestão enviada por: <@${user}>\nData de envio: ${epoch}`, embeds: [sugestaoSendingEmbed(title, sugestao)] })
             .then((msg) => msg.startThread({
                 name: `"${title}"`,
                 autoArchiveDuration: 60,
