@@ -1,13 +1,11 @@
-const { Routes } = require('discord.js');
-const { REST } = require('@discordjs/rest');
+const { REST, Routes } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
-const { clientId, guildId, token } = require('./config');
+const { clientId, token } = require('./config');
 
-const commandsJSON = [];
-
-const commandsPath = path.join(__dirname, './commands/');
+const commandsPath = path.join(__dirname, 'src', 'commands');
 const commandsDirs = fs.readdirSync(commandsPath);
+const commandsJSON = [];
 const paths = [];
 
 for (const dirs of commandsDirs) {
@@ -29,6 +27,14 @@ for (const files of paths) {
 
 const rest = new REST({ version: '10' }).setToken(token);
 
-rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commandsJSON })
-    .then(() => console.log('Successfully registered application commands.'))
-    .catch(console.error);
+(async () => {
+    try {
+        console.log(`Started refreshing ${commandsJSON.length} application (/) commands.`);
+
+        const data = await rest.put(Routes.applicationCommands(clientId), { body: commandsJSON });
+
+        console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+    } catch (error) {
+        console.error(error);
+    }
+})();

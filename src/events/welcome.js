@@ -1,6 +1,7 @@
 const { Events } = require('discord.js');
 const { WelcomeChat } = require('../embeds/eventsEmbed/welcome_Embed');
-const { joinedRecently } = require('../database/database');
+const { sequelize, DataTypes } = require('../database/database');
+const joinedRecently = require('../database/models/joinedRecently')(sequelize, DataTypes);
 
 module.exports = {
     name: Events.GuildMemberAdd,
@@ -16,7 +17,7 @@ module.exports = {
         // const epoch = `<t:${time}:R>`;
 
         if (guildId !== '889320497244962826') return;
-        // if (await member.user.bot) return;
+        if (await member.user.bot) return;
 
         const oldDB = await joinedRecently.findOne({ where: { memberId: memberID } });
 

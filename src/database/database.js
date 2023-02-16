@@ -7,7 +7,8 @@ const sequelize = new Sequelize('database', 'username', 'password', {
     storage: './src/database/database.sqlite',
 });
 
-const joinedRecently = require('./models/joinedRecently')(sequelize, DataTypes);
+require('./models/joinedRecently')(sequelize, DataTypes);
+require('./models/commandDelay')(sequelize, DataTypes);
 
 const sync = async () => {
     try {
@@ -17,7 +18,4 @@ const sync = async () => {
     }
 };
 
-module.exports = {
-    sync,
-    joinedRecently,
-};
+module.exports = { sync, sequelize, DataTypes };
