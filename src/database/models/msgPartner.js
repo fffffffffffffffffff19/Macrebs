@@ -1,30 +1,30 @@
-module.exports = (sequelize, DataTypes) => sequelize.define('PartnerMsg', {
-    User_ID: {
+module.exports = (sequelize, DataTypes) => sequelize.define('partnerMsg', {
+    userId: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Msg_ID: {
+    msgId: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Guild_Name: {
+    guildName: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Guild_ID: {
+    guildId: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Partner_Staff: {
+    partnerStaff: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Time_Expired: {
+    timeExpired: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,

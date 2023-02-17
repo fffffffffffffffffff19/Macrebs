@@ -1,20 +1,20 @@
-module.exports = (sequelize, DataTypes) => sequelize.define('Partners', {
-    User_ID: {
+module.exports = (sequelize, DataTypes) => sequelize.define('partners', {
+    userId: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Time_Created: {
+    timeCreated: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Time_Expired: {
+    timeExpired: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Partner_Staff: {
+    partnerStaff: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,

@@ -1,25 +1,25 @@
-module.exports = (sequelize, DataTypes) => sequelize.define('PartnersBlacklist', {
-    Server_Name: {
+module.exports = (sequelize, DataTypes) => sequelize.define('partnersBlacklist', {
+    serverName: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Server_Id: {
+    serverId: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Time: {
+    banedTime: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Banidor: {
+    staffHasMade: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Reason: {
+    reason: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,

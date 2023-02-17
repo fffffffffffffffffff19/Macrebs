@@ -1,25 +1,25 @@
 module.exports = (sequelize, DataTypes) => sequelize.define('Vips', {
-    User_ID: {
+    userId: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    VipRole: {
+    vipRole: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Giver: {
+    giver: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Time_Created: {
+    timeCreated: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
     },
-    Time_Expired: {
+    timeExpired: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: false,
