@@ -15,17 +15,17 @@ module.exports = {
                     {
                         label: '🌼 New Garden',
                         description: 'Gostaria de se tornar staff?',
-                        value: 'newGarden_Menu',
+                        value: 'newGardenMenu',
                     },
                     {
                         label: '☕ Seja Staff',
                         description: 'Gostaria de se tornar staff?',
-                        value: 'sejaStaff_Menu',
+                        value: 'sejaStaffMenu',
                     },
                     {
                         label: '💌 Enviar sugestão',
                         description: 'Envie sua sugestão aqui.',
-                        value: 'sugestao_Menu',
+                        value: 'sugestaoMenu',
                     },
                 ));
 

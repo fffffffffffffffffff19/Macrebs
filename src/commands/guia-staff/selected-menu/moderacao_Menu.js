@@ -1,7 +1,7 @@
 const Embed = require('../embeds/moderacaoGuia_Embed');
 
 module.exports = {
-    id: 'moderacao_Menu',
+    id: 'moderacaoMenu',
     async execute(interaction) {
         const staffRole = await interaction.member.roles.cache.has('936600289539145751');
 

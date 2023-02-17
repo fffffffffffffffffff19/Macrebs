@@ -15,12 +15,12 @@ module.exports = {
                     {
                         label: '🧇・Mercadinho',
                         description: 'Nossa loja oficial do servidor.',
-                        value: 'mercadinho_Menu',
+                        value: 'mercadinhoMenu',
                     },
                     {
                         label: '🥘・Divulgação',
                         description: 'Gostaria de divulgar um servidor??',
-                        value: 'divulgacao_Menu',
+                        value: 'divulgacaoMenu',
                     },
                 ));
 

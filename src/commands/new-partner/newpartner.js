@@ -4,6 +4,7 @@ const { Normal, Animated } = require('./config/inviteHandler');
 const { MsgReply, UnknowInvite, MsgNotCollected, UserDM, MsgPartnerShip, NotInfinitLink } = require('./embeds/partner_Embed');
 const { sequelize, DataTypes } = require('../../database/database');
 const partnerDB = require('../../database/models/partner')(sequelize, DataTypes);
+const { timeWeek } = require('../../tools/time');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -87,20 +88,17 @@ module.exports = {
                 await interaction.deleteReply();
                 await channelS.send({ embeds: [MsgNotCollected()] }).then((msg) => setTimeout(() => msg.delete(), 15000));
             } else if (reason === 'done') {
-                const timeNow = new Date();
-                const timeOneWeek = new Date(timeNow.setDate(new Date().getDate() + 7));
-
                 await interaction.deleteReply();
                 await user.roles.add(partnerRole);
                 await channelS.send({ content: `<@${interaction.user.id}>`, embeds: [MsgPartnerShip(user)] });
-                await partnerDB.create({ userId: user.id, timeCreated: timeNow, timeExpired: timeOneWeek, partnerStaff: partnerStaffUserId });
+                await partnerDB.create({ userId: user.id, timeCreated: timeWeek().timeNow, timeExpired: timeWeek().oneWeek, partnerStaff: partnerStaffUserId });
                 await partnerDB.findOne({ where: { userId: user.id } }).then(async (User) => {
                     if (User) {
                         if (noDM) {
-                            await partnerDB.update({ timeCreated: timeNow, timeExpired: timeOneWeek, partnerStaff: partnerStaffUserId }, { where: { userId: user.id } });
-                            await user.send({ embeds: [UserDM(user, timeNow, timeOneWeek)] }).catch(() => console.log('dm not open'));
-                        } else await partnerDB.update({ timeCreated: timeNow, timeExpired: timeOneWeek, partnerStaff: partnerStaffUserId }, { where: { userId: user.id } });
-                    } else await partnerDB.create({ userId: user.id, timeCreated: timeNow, timeExpired: timeOneWeek, partnerStaff: partnerStaffUserId });
+                            await partnerDB.update({ timeCreated: timeWeek().timeNow, timeExpired: timeWeek().oneWeek, partnerStaff: partnerStaffUserId }, { where: { userId: user.id } });
+                            await user.send({ embeds: [UserDM(user, timeWeek().timeNow, timeWeek().oneWeek)] }).catch(() => console.log('dm not open'));
+                        } else await partnerDB.update({ timeCreated: timeWeek().timeNow, timeExpired: timeWeek().oneWeek, partnerStaff: partnerStaffUserId }, { where: { userId: user.id } });
+                    } else await partnerDB.create({ userId: user.id, timeCreated: timeWeek().timeNow, timeExpired: timeWeek().oneWeek, partnerStaff: partnerStaffUserId });
                 });
             }
         });

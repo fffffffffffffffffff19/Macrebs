@@ -2,7 +2,7 @@ const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { newGardenEmbed } = require('../embeds/msgReply_Embed');
 
 module.exports = {
-    id: 'newGarden_Menu',
+    id: 'newGardenMenu',
     async execute(interaction) {
         const Button = new ActionRowBuilder()
             .addComponents(new ButtonBuilder()

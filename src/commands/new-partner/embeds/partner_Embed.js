@@ -67,8 +67,8 @@ module.exports = {
     }),
     UserDM: (user, partnerTime, partnerExpireTime) => ({
         color: 0xFFFFFF,
-        title: '˃ ᴗ ˂ : Macrebs・Partner ! 𓂃 ‹3',
-        description: `. * 　　 ✦ . 　⁺ 　 . ⁺ 　<a:1Stars:985811138119864340> ✦ .⁺\n˚ ̟☆ **Obrigada**﹒<@${user.id}>, agradecemos pela sua parceria!\n˚ ̟☆ **Nota**﹒**( ੭ ˙꒳​˙ )੭** Caso o representante saia, a parceria é desfeita.\n. * 　　 ✦ . 　⁺ 　 . ⁺ 　<a:2Stars:985811138119864340> ✦ .⁺\n\n˚ ̟☆ **Nota**﹒A parceria expirará em 7 dias, retorne para renovar.`,
+        title: '⠀⠀⠀⠀⠀⠀⠀˃ ᴗ ˂ : Macrebs・Partner ! 𓂃 ‹3',
+        description: `. * 　　 ✦ . 　⁺ 　 . ⁺ 　<a:1Stars:985811138119864340> ✦ .⁺\n**˚ ̟☆ Obrigada**﹒<@${user.id}>, agradecemos pela sua parceria!\n**˚ ̟☆ ( ੭ ˙꒳​˙ )੭**﹒Caso o representante saia, a parceria é desfeita.\n. * 　　 ✦ . 　⁺ 　 . ⁺ 　<a:2Stars:985811138119864340> ✦ .⁺\n\n˚ ̟☆ **Nota**﹒A parceria expirará em 7 dias, retorne para renovar.`,
         image: {
             url: 'https://i.imgur.com/WzKUHWV.png',
         },
@@ -79,12 +79,12 @@ module.exports = {
         fields: [
             {
                 name: 'Parceria criada em:',
-                value: `**__${partnerTime}__**`,
+                value: `　**__${partnerTime}__**`,
                 inline: true,
             },
             {
                 name: 'Parceria expira em:',
-                value: `**__${partnerExpireTime}__**`,
+                value: `　**__${partnerExpireTime}__**`,
                 inline: true,
             },
         ],

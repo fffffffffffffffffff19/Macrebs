@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction) {
         const channel = await interaction.guild.channels.cache.get('1054807090138464306'); // spamChannel: 960641940125261874 / mainChannel: 1054807090138464306
         const button = new ActionRowBuilder().addComponents(new ButtonBuilder()
-            .setCustomId('requisitos_Button')
+            .setCustomId('requisitosButton')
             .setLabel('Ler os requisitos.')
             .setStyle(ButtonStyle.Secondary));
 

@@ -1,7 +1,7 @@
 const { boostingEmbed } = require('../embeds/msgReply_Embed');
 
 module.exports = {
-    id: 'boosting_Menu',
+    id: 'boostingMenu',
     async execute(interaction) {
         await interaction.reply({ embeds: [boostingEmbed()], ephemeral: true });
     },

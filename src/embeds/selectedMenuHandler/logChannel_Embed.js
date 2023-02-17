@@ -4,6 +4,6 @@ module.exports = {
         description: `User: <@${interaction.user.id}>\
             \nID: ${interaction.user.id}\
             \nMenu: ${interaction.customId}\
-            \nHorário: \`${time}\``,
+            \nHorário: ${time}`,
     }),
 };

@@ -4,6 +4,7 @@ const { Events, Collection } = require('discord.js');
 const { log } = require('../embeds/selectedMenuHandler/logChannel_Embed');
 const { sequelize, DataTypes } = require('../database/database');
 const commandDelay = require('../database/models/commandDelay')(sequelize, DataTypes);
+const { epoch } = require('../tools/time');
 
 module.exports = (client) => {
     client.selectedMenus = new Collection();
@@ -56,12 +57,11 @@ module.exports = (client) => {
                 await interaction.reply({ content: '*Putsss!!* Tive um problema ao executar esse menu, caso aconteça novamente, informe um staff do problema. **"Erro ao executar o menu"**', ephemeral: true });
             }
         } else {
-            const timeFull = new Date().toLocaleDateString();
             const channel = await interaction.guild.channels.cache.get('1020455873052680344');
             const userId = await interaction.user.id;
             const useDelay = await commandDelay.findOne({ where: { memberId: userId } });
 
-            await channel.send({ embeds: [log(interaction, timeFull)] });
+            await channel.send({ embeds: [log(interaction, epoch())] });
 
             if (useDelay !== null) await interaction.reply({ content: '*Eii!!* Espere um pouco antes de executar novamente. **30s** >:(', ephemeral: true });
             else {
@@ -73,7 +73,7 @@ module.exports = (client) => {
                     await interaction.reply({ content: '*Putsss!!* Tive um problema ao executar esse menu, caso aconteça novamente, informe um staff do problema. \n**"Erro ao executar o menu"**', ephemeral: true });
                 }
 
-                setTimeout(async () => commandDelay.destroy({ where: { memberId: userId } }), 30000);
+                setTimeout(() => commandDelay.destroy({ where: { memberId: userId } }), 30000);
             }
         }
     });

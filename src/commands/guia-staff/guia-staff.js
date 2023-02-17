@@ -9,20 +9,20 @@ module.exports = {
         const channel = await interaction.guild.channels.cache.get('1021640639974211645');
         const Menu = new ActionRowBuilder()
             .addComponents(new StringSelectMenuBuilder()
-                .setCustomId('guia_parcerias')
+                .setCustomId('guiaStaffMenu')
                 .setPlaceholder('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱')
                 .addOptions(
                     {
                         label: '🥙・Moderação',
-                        value: 'moderacao_Menu',
+                        value: 'moderacaoMenu',
                     },
                     {
                         label: '🌮・Parcerias',
-                        value: 'parcerias_Menu',
+                        value: 'parceriasMenu',
                     },
                     {
                         label: '🥪・Recepção',
-                        value: 'recepcao_Menu',
+                        value: 'recepcaoMenu',
                     },
                 ));
 

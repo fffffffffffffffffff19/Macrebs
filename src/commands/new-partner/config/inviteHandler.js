@@ -1,13 +1,11 @@
 const { NewPartnerDefaultBanner, NewPartner } = require('../embeds/partner_Embed');
 const { sequelize, DataTypes } = require('../../../database/database');
 const msgPartnerDB = require('../../../database/models/msgPartner')(sequelize, DataTypes);
-
-const timeNow = new Date();
-const timeOneWeek = new Date(timeNow.setDate(new Date().getDate() + 7));
+const { timeWeek } = require('../../../tools/time');
 
 const partnerPing = '<@&940615716191756380>';
 
-const db = (msg, user, guildNAME, guilID, interaction) => msgPartnerDB.create({ userId: user.id, msgId: msg.id, guildName: guildNAME, guildId: guilID, partnerStaff: interaction.user.id, timeExpired: timeOneWeek });
+const db = (msg, user, guildNAME, guilID, interaction) => msgPartnerDB.create({ userId: user.id, msgId: msg.id, guildName: guildNAME, guildId: guilID, partnerStaff: interaction.user.id, timeExpired: timeWeek().oneWeek });
 
 module.exports = {
     Animated: (channelP, guildIconID, guildBannerID, icon, iconAnimated, banner, bannerAnimated, guildNAME, guildSize, inviteLink, user, interaction, guilID) => {

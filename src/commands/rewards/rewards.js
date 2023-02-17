@@ -15,17 +15,17 @@ module.exports = {
                     {
                         label: '🍞・Invites',
                         description: 'Convide amigos e receba prêmios.',
-                        value: 'invites_Menu',
+                        value: 'invitesMenu',
                     },
                     {
                         label: '🥞・Interação',
                         description: 'Se gosta de interagir, temos prêmios por isso.',
-                        value: 'interacao_Menu',
+                        value: 'interacaoMenu',
                     },
                     {
                         label: '🧀・Boosting',
                         description: 'Caso deu boost, lista de seus benefícios.',
-                        value: 'boosting_Menu',
+                        value: 'boostingMenu',
                     },
                 ));
 

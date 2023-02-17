@@ -15,17 +15,17 @@ module.exports = {
                     {
                         label: '🌌・Denuncia',
                         description: 'Canal para criar denuncias.',
-                        value: 'denuncia_Menu',
+                        value: 'denunciaMenu',
                     },
                     {
                         label: '💠・Ajuda',
                         description: 'Precisa de ajuda com alguma coisa ?',
-                        value: 'ajuda_Menu',
+                        value: 'ajudaMenu',
                     },
                     {
                         label: '🧊・Dúvida',
                         description: 'Tire dúvidas de assuntos do servidor.',
-                        value: 'duvida_Menu',
+                        value: 'duvidaMenu',
                     },
                 ));
 
