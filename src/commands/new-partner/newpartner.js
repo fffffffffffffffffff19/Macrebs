@@ -17,8 +17,8 @@ module.exports = {
         const noDM = await interaction.options.getBoolean('dm');
         const user = await interaction.options.getMentionable('representante');
         const partnerRole = await interaction.guild.roles.cache.find((role) => role.id === '960244540680335400');
-        const channelS = await interaction.guild.channels.cache.get('960641940125261874'); // Default-Setup: '986311644093243432' // Spam: '960641940125261874'
-        const channelP = await interaction.guild.channels.cache.get('918630672871063643'); // Default-Partner: '920753297676198010' // Repositório: '918630672871063643'
+        const channelS = await interaction.guild.channels.cache.get('986311644093243432'); // Default-Setup: '986311644093243432' // Spam: '960641940125261874'
+        const channelP = await interaction.guild.channels.cache.get('920753297676198010'); // Default-Partner: '920753297676198010' // Repositório: '918630672871063643'
 
         const filter = (m) => interaction.user.id === m.author.id && m.content.includes('https://discord.gg/');
         const collector = await interaction.channel.createMessageCollector({ filter, time: 25000, max: 2 });
