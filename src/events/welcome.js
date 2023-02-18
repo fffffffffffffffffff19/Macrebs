@@ -6,16 +6,25 @@ const joinedRecently = require('../database/models/joinedRecently')(sequelize, D
 module.exports = {
     name: Events.GuildMemberAdd,
     async execute(member) {
-        const icon = await member.user.displayAvatarURL({ dynamic: true, size: 4096 });
-        const memberID = await member.id;
-        const memberDisplayName = await member.displayName;
         const guildId = await member.guild.id;
-        const guildSize = await member.guild.memberCount;
-        const channel = await member.guild.channels.cache.get('889552544311943168');
-        const staffRole = '<@&936599914014720041>';
 
         if (guildId !== '889320497244962826') return;
         if (await member.user.bot) return;
+        if (await member.user.avatar === null) return;
+
+        const data = new Date();
+        data.setDate(data.getDate() - 3);
+        const datat = new Date(data.getTime());
+        const time = Math.floor(new Date(datat).getTime('-3:00') / 1000.0);
+
+        if (await member.user.joinedTimestamp <= time) return;
+
+        const icon = await member.user.displayAvatarURL({ dynamic: true, size: 4096 });
+        const memberID = await member.id;
+        const memberDisplayName = await member.displayName;
+        const guildSize = await member.guild.memberCount;
+        const channel = await member.guild.channels.cache.get('889552544311943168');
+        const staffRole = '<@&936599914014720041>';
 
         const oldDB = await joinedRecently.findOne({ where: { memberId: memberID } });
 
