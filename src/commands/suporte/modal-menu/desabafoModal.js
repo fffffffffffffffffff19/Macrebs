@@ -20,11 +20,15 @@ module.exports = {
         const tituloDesabafo = await interaction.fields.getTextInputValue('tituloDesabafo');
         const desabafo = await interaction.fields.getTextInputValue('textoDesabafo');
 
-        await channel.send({ content: `Título: "**${tituloDesabafo}**"\nData de envio: ${epoch()}\n*Quer enviar o seu anonimamente? Basta checar em <#1019077752390942792>*`, embeds: [desabafoEmbed(desabafo, embedImage)] })
+        await channel.send({ content: `Título: "**${tituloDesabafo}**"\nData de envio: ${epoch()}\n*Quer enviar o seu anonimamente? Basta checar em <#1019077752390942792>.*`, embeds: [desabafoEmbed(desabafo, embedImage)] })
             .then((msg) => msg.startThread({
                 name: '꒰ᐢ • ˕ • ᐢ꒱ Mande seu apoio aqui. ˎˊ˗',
                 autoArchiveDuration: 60,
-            }).catch(() => msg.delete()));
+            }).catch(async () => {
+                await msg.delete();
+                await interaction.reply({ content: 'Houve um erro ao enviar o seu texto, comunique um staff sobre o acontecimento. "Erro ao enviar a mensagem."', ephemeral: true });
+            }));
+
         await interaction.reply({ content: 'Texto enviado com sucesso. Obgda por desabafar :3', ephemeral: true });
     },
 };

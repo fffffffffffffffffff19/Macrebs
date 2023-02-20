@@ -5,7 +5,7 @@ module.exports = {
     once: false,
     async execute(msg) {
         if (msg.channelId !== '1051633625159962674') return;
-        if (msg.id === '971426896459993168') return;
+        if (msg.author.id === '971426896459993168') return;
 
         await msg.startThread({
             name: '꒰ᐢ • ˕ • ᐢ꒱ Mande seu apoio aqui. ˎˊ˗',
