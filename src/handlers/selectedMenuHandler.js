@@ -9,7 +9,7 @@ const { epoch } = require('../tools/time');
 module.exports = (client) => {
     client.selectedMenus = new Collection();
 
-    const list = ['denuncia_Menu', 'ajuda_Menu', 'duvida_Menu', 'resgatar_Menu'];
+    const list = ['denunciaMenu', 'ajudaMenu', 'duvidaMenu', 'desabafoMenu'];
     const menusPaths = path.join(__dirname, '../', 'commands');
     const menusDirs = fs.readdirSync(menusPaths);
     const paths = [];
