@@ -16,7 +16,7 @@ module.exports = {
         ];
         const random = Math.floor(Math.random() * 8);
         const embedImage = list[random];
-        const channel = await interaction.guild.channels.cache.get('960641940125261874');
+        const channel = await interaction.guild.channels.cache.get('1051633625159962674');
         const tituloDesabafo = await interaction.fields.getTextInputValue('tituloDesabafo');
         const desabafo = await interaction.fields.getTextInputValue('textoDesabafo');
 
