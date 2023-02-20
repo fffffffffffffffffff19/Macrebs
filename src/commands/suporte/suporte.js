@@ -6,7 +6,7 @@ module.exports = {
         .setName('suporte')
         .setDescription('Mensagens do suporte'),
     async execute(interaction) {
-        const channel = await interaction.guild.channels.cache.get('1019077752390942792'); // spamChannel: 960641940125261874 / mainChannel: 1019077752390942792
+        const channel = await interaction.guild.channels.cache.get('960641940125261874'); // spamChannel: 960641940125261874 / mainChannel: 1019077752390942792
         const menu = new ActionRowBuilder()
             .addComponents(new StringSelectMenuBuilder()
                 .setCustomId('suporte')
@@ -26,6 +26,11 @@ module.exports = {
                         label: '🧊・Dúvida',
                         description: 'Tire dúvidas de assuntos do servidor.',
                         value: 'duvidaMenu',
+                    },
+                    {
+                        label: '📘・Desabafo',
+                        description: 'Mande o seu desabafo anonimamente.',
+                        value: 'desabafoMenu',
                     },
                 ));
 

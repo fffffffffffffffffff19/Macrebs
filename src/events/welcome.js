@@ -12,12 +12,14 @@ module.exports = {
         if (await member.user.bot) return;
         if (await member.user.avatar === null) return;
 
-        const data = new Date();
+        console.log(await member.user.createdTime);
+        console.log(await member.user.createdTimestamp);
+        /* const data = new Date();
         data.setDate(data.getDate() - 3);
-        const datat = new Date(data.getTime());
-        const time = Math.floor(new Date(datat).getTime('-3:00') / 1000.0);
+        const dataNew = new Date(data.getTime());
+        const dateUser = new Date(await member.user.createdTimestamp);
 
-        if (await member.user.joinedTimestamp <= time) return;
+        if (dateUser.toDateString() <= dataNew.toDateString()) return; */
 
         const icon = await member.user.displayAvatarURL({ dynamic: true, size: 4096 });
         const memberID = await member.id;
