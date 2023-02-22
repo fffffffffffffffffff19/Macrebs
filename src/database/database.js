@@ -9,6 +9,10 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 
 require('./models/joinedRecently')(sequelize, DataTypes);
 require('./models/commandDelay')(sequelize, DataTypes);
+require('./models/vipstatus')(sequelize, DataTypes);
+require('./models/msgPartner')(sequelize, DataTypes);
+require('./models/partner')(sequelize, DataTypes);
+require('./models/partnerBlacklist')(sequelize, DataTypes);
 
 const sync = async () => {
     try {
