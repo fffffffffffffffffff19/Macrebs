@@ -13,9 +13,6 @@ module.exports = {
         if (await member.user.bot) return;
         if (await member.user.avatar === null) return;
 
-        console.log(await member.user.createdTime);
-        console.log(await member.user.createdTimestamp);
-
         const requiredTime = new Date();
         requiredTime.setDate(requiredTime.getDate() - 3);
         const comparateDate = new timestamp(requiredTime.getTime()).formatDay;
