@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "127.0.0.1",
+            "database": "${workspaceFolder:_discord.js}/src/database/database.sqlite"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
