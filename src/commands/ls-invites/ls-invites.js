@@ -6,10 +6,22 @@ module.exports = {
         .setName('invites')
         .setDescription('Precisa ver os seus invites?')
         .addStringOption((option) => option.setName('code')
-            .setDescription('Escreva o código do invite. (Opcional)')),
+            .setDescription('Escreva o código do invite. (Opcional)'))
+        .addMentionableOption((option) => option.setName('user')
+            .setDescription('Mencione uma pessoa. (Opcional)')),
     async execute(interaction) {
         const codeString = await interaction.options.getString('code');
         const invites = await interaction.guild.invites.fetch();
+        const mentionable = await interaction.options.getMentiolable('user');
+
+        const allInvites = (invite) => {
+            console.log(invite);
+        };
+
+        // fazer uma condicional para mostrar todos os invites de um mencionado
+        if (mentionable !== null) {
+            return allInvites(invites);
+        }
 
         if (codeString !== null) {
             return invites.forEach((invite) => {

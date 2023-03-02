@@ -20,7 +20,7 @@ module.exports = {
 
             await privateThread.send({ content: ping, embeds: [channelEmbed(interaction)], components: [panelButtons] }).then(async (button) => {
                 const filter = async (buttonClick) => buttonClick.user.id == interaction.user.id || buttonClick.member.roles.cache.has(parceriaRole.id) || interaction.user.id == '249955734958243840';
-                const collector = await button.createMessageComponentCollector({ filter, componentType: ComponentType.Button, time: 15000 }); // 1500000 = 25minutos
+                const collector = await button.createMessageComponentCollector({ filter, componentType: ComponentType.Button, time: 1500000 }); // 1500000 = 25minutos
                 const onButtonClick = () => collector.stop('buttonClick');
 
                 collector.on('collect', (buttonClick) => {
