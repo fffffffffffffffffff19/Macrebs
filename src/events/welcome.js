@@ -1,5 +1,5 @@
 const { Events } = require('discord.js');
-const { timestamp } = require('timestamp-conv');
+// const { timestamp } = require('timestamp-conv');
 const { WelcomeChat } = require('../embeds/eventsEmbed/welcome_Embed');
 const { sequelize, DataTypes } = require('../database/database');
 const joinedRecently = require('../database/models/joinedRecently')(sequelize, DataTypes);
@@ -13,13 +13,14 @@ module.exports = {
         if (await member.user.bot) return;
         if (await member.user.avatar === null) return;
 
+        /*
         const requiredTime = new Date();
         requiredTime.setDate(requiredTime.getDate() - 3);
         const comparateDate = new timestamp(requiredTime.getTime()).formatDay;
         const userAge = new timestamp(await member.user.createdTimestamp).formatDay;
 
         if (userAge >= comparateDate) return;
-
+        */
         const icon = await member.user.displayAvatarURL({ dynamic: true, size: 4096 });
         const memberID = await member.id;
         const memberDisplayName = await member.displayName;

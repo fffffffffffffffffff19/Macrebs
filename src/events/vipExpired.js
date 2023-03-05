@@ -1,3 +1,4 @@
+const { Events } = require('discord.js');
 const { sequelize, DataTypes } = require('../database/database');
 const vipStatusDB = require('../database/models/vipstatus')(sequelize, DataTypes);
 const { VipExpired } = require('../commands/setvip/embeds/setvip_Embed');
@@ -5,12 +6,12 @@ const { timeMonth } = require('../tools/time');
 const { guildId } = require('../../config');
 
 module.exports = {
-    name: 'ready',
+    name: Events.ClientReady,
     once: true,
     async execute(client) {
         setInterval(async () => {
             await vipStatusDB.findAll({ where: { timeExpired: timeMonth().timeNow } }).then(async (time) => {
-                time.foreach(async (data) => {
+                time.forEach(async (data) => {
                     const { timeExpired } = data.dataValues;
 
                     if (!timeExpired == timeMonth().timeNow) return;

@@ -5,10 +5,10 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('invites')
         .setDescription('Precisa ver os seus invites?')
-        .addStringOption((option) => option.setName('code')
-            .setDescription('Escreva o código do invite. (Opcional)'))
         .addMentionableOption((option) => option.setName('user')
-            .setDescription('Mencione uma pessoa. (Opcional)')),
+            .setDescription('Mencione uma pessoa. (Opcional)'))
+        .addStringOption((option) => option.setName('code')
+            .setDescription('Escreva o código do invite. (Opcional)')),
     async execute(interaction) {
         const codeString = await interaction.options.getString('code');
         const invites = await interaction.guild.invites.fetch();
