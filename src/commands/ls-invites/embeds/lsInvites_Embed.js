@@ -3,8 +3,18 @@ const { footerText, footerIcon } = require('../../../embeds/footer');
 module.exports = {
     AllInvites: (member, uses, codes) => ({
         color: 0xFFFFFF,
-        title: '・ Macrebs - Invites ˎˊ-',
-        description: `Olá <@${member}>, aqui está uma lista de todos os seus invites.\nUse **/info** para ver os prêmios.\n\nNo total, você convidou __${uses}__ pessoas.\n\nMeus convites:\n **${codes}**`,
+        title: '**・ Macrebs - Invites ˎˊ-**',
+        description: `Olá <@${member}>, aqui está uma lista de todos os seus invites.\nNo total, você convidou __${uses}__ pessoas.\n\nMeus convites:\n **${codes}**\n\nVá ao canal <#1019082474229334068> para ver os prêmios ao convidar pessoas.`,
+        footer: {
+            text: `${footerText}`,
+            icon_url: `${footerIcon}`,
+        },
+    }),
+
+    AllInvitesMentionable: (member, uses, codes) => ({
+        color: 0xFFFFFF,
+        title: '**・ Macrebs - Invites ˎˊ-**',
+        description: `Invites de <@${member}>\nNo total, foi convidado __${uses}__ pessoas.\n\nConvites:\n **${codes}**`,
         footer: {
             text: `${footerText}`,
             icon_url: `${footerIcon}`,
@@ -14,7 +24,7 @@ module.exports = {
     InviteCode: (inviteCode, uses, inviterId) => ({
         color: 0xFFFFFF,
         title: '**・ Macrebs - Invites ˎˊ-**',
-        description: `O invite (**${inviteCode}**) tem __${uses}__ convites.\nEste invite pertence a <@${inviterId}>\n\nUse **/info** para ver os prêmios.`,
+        description: `O invite (**${inviteCode}**) tem __${uses}__ convites.\nEste invite pertence a <@${inviterId}>\n\nVá ao canal <#1019082474229334068> para ver os prêmios ao convidar pessoas.`,
         footer: {
             text: `${footerText}`,
             icon_url: `${footerIcon}`,
@@ -31,10 +41,20 @@ module.exports = {
         },
     }),
 
+    NoInviteMentionable: () => ({
+        color: 0xFFFFFF,
+        title: '**・ Macrebs - Invites ˎˊ-**',
+        description: 'Esta pessoa não tem nenhum invite criado.',
+        footer: {
+            text: `${footerText}`,
+            icon_url: `${footerIcon}`,
+        },
+    }),
+
     UnknownInvite: () => ({
         color: 0xFFFFFF,
         title: '**・ Macrebs - Invites ˎˊ-**',
-        description: 'O código de invite inserido não existe no servidor ou é de outra pessoa.',
+        description: 'O código de invite inserido não existe no servidor.',
         footer: {
             text: `${footerText}`,
             icon_url: `${footerIcon}`,

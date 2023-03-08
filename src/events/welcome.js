@@ -13,14 +13,13 @@ module.exports = {
         if (await member.user.bot) return;
         if (await member.user.avatar === null) return;
 
-        /*
-        const requiredTime = new Date();
+        /* const requiredTime = new Date();
         requiredTime.setDate(requiredTime.getDate() - 3);
         const comparateDate = new timestamp(requiredTime.getTime()).formatDay;
         const userAge = new timestamp(await member.user.createdTimestamp).formatDay;
 
-        if (userAge >= comparateDate) return;
-        */
+        if (userAge >= comparateDate) return; */
+
         const icon = await member.user.displayAvatarURL({ dynamic: true, size: 4096 });
         const memberID = await member.id;
         const memberDisplayName = await member.displayName;
