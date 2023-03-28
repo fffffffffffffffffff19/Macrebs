@@ -1,5 +1,4 @@
 const { Events } = require('discord.js');
-// const { timestamp } = require('timestamp-conv');
 const { WelcomeChat } = require('../embeds/eventsEmbed/welcome_Embed');
 const { sequelize, DataTypes } = require('../database/database');
 const joinedRecently = require('../database/models/joinedRecently')(sequelize, DataTypes);
@@ -13,12 +12,11 @@ module.exports = {
         if (await member.user.bot) return;
         if (await member.user.avatar === null) return;
 
-        /* const requiredTime = new Date();
+        const requiredTime = new Date();
         requiredTime.setDate(requiredTime.getDate() - 3);
-        const comparateDate = new timestamp(requiredTime.getTime()).formatDay;
-        const userAge = new timestamp(await member.user.createdTimestamp).formatDay;
+        const userAge = new Date(await member.user.createdTimestamp);
 
-        if (userAge >= comparateDate) return; */
+        if (userAge >= requiredTime) return;
 
         const icon = await member.user.displayAvatarURL({ dynamic: true, size: 4096 });
         const memberID = await member.id;
@@ -41,6 +39,7 @@ module.exports = {
             if (oldDB !== null) {
                 timeOut(oldDB);
             } else {
+                // error, verificar se há db da pessoa
                 const newDB = await joinedRecently.create({ memberId: memberID, memberName: memberDisplayName });
 
                 await channel.send({ content: `${staffRole}`, embeds: [WelcomeChat(icon, memberID, guildSize)] }).then((msg) => setTimeout(() => msg.delete().catch(() => console.error('WelcomeMensageError: Msg not exist.')), 420000));
