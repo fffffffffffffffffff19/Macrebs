@@ -1,8 +1,11 @@
+### Main
 node_modules
 .env
 database.sqlite
+### Test files and etc..
 off
 _teste
 _off
 teste.js
 teste
+deveras.js
