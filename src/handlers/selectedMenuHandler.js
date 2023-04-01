@@ -57,7 +57,7 @@ module.exports = (client) => {
                 await interaction.reply({ content: '*Putsss!!* Tive um problema ao executar esse menu, caso aconteça novamente, informe um staff do problema. **"Erro ao executar o menu"**', ephemeral: true });
             }
         } else {
-            const channel = await interaction.guild.channels.cache.get('1020455873052680344');
+            const channel = await interaction.guild.channels.cache.get('1091746083287334982');
             const userId = await interaction.user.id;
             const useDelay = await commandDelay.findOne({ where: { memberId: userId } });
 

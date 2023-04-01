@@ -57,7 +57,7 @@ module.exports = (client) => {
                 await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
             }
         } else {
-            const channel = await interaction.guild.channels.cache.get('1020455873052680344');
+            const channel = await interaction.guild.channels.cache.get('1091747526262136922');
             const userId = await interaction.user.id;
             const useDelay = await commandDelay.findOne({ where: { memberId: userId } });
 
