@@ -68,8 +68,7 @@ module.exports = (client) => {
                 setTimeout(() => commandDelay.destroy({ where: { memberId: userId } }), 30000);
             };
 
-            await channel.send({ embeds: [log(interaction, epoch())] });
-
+            await channel.send({ embeds: [log(interaction, epoch(), interaction.customId)] });
             if (useDelay !== null) {
                 await interaction.reply({ content: '*Eii!!* Espere um pouco antes de executar novamente. **30s** >:(', ephemeral: true });
                 database(true);

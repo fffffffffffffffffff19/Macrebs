@@ -61,7 +61,7 @@ module.exports = (client) => {
             const userId = await interaction.user.id;
             const useDelay = await commandDelay.findOne({ where: { memberId: userId } });
 
-            await channel.send({ embeds: [log(interaction, epoch())] });
+            await channel.send({ embeds: [log(interaction, epoch(), interaction.values[0])] });
 
             if (useDelay !== null) await interaction.reply({ content: '*Eii!!* Espere um pouco antes de executar novamente. **30s** >:(', ephemeral: true });
             else {
