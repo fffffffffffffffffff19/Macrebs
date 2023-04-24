@@ -48,34 +48,24 @@ module.exports = {
 
             await invite.delete();
 
-            const api = await inviteAPI(inviteClean.linkCode);
+            const { expires_at, guild, approximate_member_count } = await inviteAPI(inviteClean.linkCode);
 
-            const apiData = {
-                expires_at: api.expires_at,
-                guilID: api.guild.id,
-                guildName: api.guild.name,
-                guildSize: api.approximate_member_count,
-                guildIconID: api.guild.icon,
-                guildBannerID: api.guild.banner,
-                features: api.guild.features,
-            };
-
-            const iconAnimated = `https://cdn.discordapp.com/icons/${apiData.guilID}/${apiData.guildIconID}.gif?size=4096`;
-            const icon = `https://cdn.discordapp.com/icons/${apiData.guilID}/${apiData.guildIconID}.png?size=4096`;
-            const bannerAnimated = `https://cdn.discordapp.com/banners/${apiData.guilID}/${apiData.guildBannerID}.gif?size=4096`;
-            const banner = `https://cdn.discordapp.com/banners/${apiData.guilID}/${apiData.guildBannerID}.png?size=4096`;
+            const iconAnimated = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.gif?size=4096`;
+            const icon = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=4096`;
+            const bannerAnimated = `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.gif?size=4096`;
+            const banner = `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.png?size=4096`;
 
             try {
-                if (apiData.expires_at !== null) return channelS.send({ embeds: [NotInfinitLink()] }).then((message) => setTimeout(() => message.delete(), 15000));
+                if (expires_at !== null) return channelS.send({ embeds: [NotInfinitLink()] }).then((message) => setTimeout(() => message.delete(), 15000));
 
-                if (apiData.guildSize == undefined) return unkInvite();
+                if (approximate_member_count == undefined) return unkInvite();
 
-                const toString = apiData.features.toString();
+                const toString = guild.features.toString();
 
                 if (toString.includes('BANNER')) validation = true;
 
-                if (validation) Animated(channelP, apiData.guildIconID, apiData.guildBannerID, icon, iconAnimated, banner, bannerAnimated, apiData.guildName, apiData.guildSize, inviteClean.linkFull, user, interaction, apiData.guilID, channelS);
-                else Normal(channelP, apiData.guildIconID, icon, iconAnimated, apiData.guildName, apiData.guildSize, inviteClean.linkFull, user, interaction, apiData.guilID, channelS);
+                if (validation) Animated(channelP, guild.icon, guild.banner, icon, iconAnimated, banner, bannerAnimated, guild.name, approximate_member_count, inviteClean.linkFull, user, interaction, guild.id, channelS);
+                else Normal(channelP, guild.icon, icon, iconAnimated, guild.name, approximate_member_count, inviteClean.linkFull, user, interaction, guild.id, channelS);
 
                 await collector.stop('done');
             } catch (e) { console.log(e); }

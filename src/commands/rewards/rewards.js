@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const replyEmbed = require('./embeds/reply_Embed');
 
 module.exports = {
@@ -6,30 +6,24 @@ module.exports = {
         .setName('rewards')
         .setDescription('Mensagens do suporte'),
     async execute(interaction) {
-        const channel = await interaction.guild.channels.cache.get('1019082474229334068');
-        const menu = new ActionRowBuilder()
-            .addComponents(new StringSelectMenuBuilder()
-                .setCustomId('rewards')
-                .setPlaceholder('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱')
-                .addOptions(
-                    {
-                        label: '🍞・Invites',
-                        description: 'Convide amigos e receba prêmios.',
-                        value: 'invitesMenu',
-                    },
-                    {
-                        label: '🥞・Interação',
-                        description: 'Se gosta de interagir, temos prêmios por isso.',
-                        value: 'interacaoMenu',
-                    },
-                    {
-                        label: '🧀・Boosting',
-                        description: 'Caso deu boost, lista de seus benefícios.',
-                        value: 'boostingMenu',
-                    },
-                ));
+        const channel = await interaction.guild.channels.cache.get('1019082474229334068'); // spamChannel: 960641940125261874 / infoChannel: 1019082474229334068
 
-        await channel.send({ embeds: [replyEmbed], components: [menu] });
+        const invitesButton = new ButtonBuilder()
+            .setCustomId('invitesButton')
+            .setLabel('・Invites')
+            .setStyle(ButtonStyle.Secondary);
+        const interacaoButton = new ButtonBuilder()
+            .setCustomId('interacaoButton')
+            .setLabel('Interação')
+            .setStyle(ButtonStyle.Secondary);
+        const boostingButton = new ButtonBuilder()
+            .setCustomId('boostingButton')
+            .setLabel('Boosting・')
+            .setStyle(ButtonStyle.Secondary);
+
+        const button = new ActionRowBuilder().addComponents(invitesButton, interacaoButton, boostingButton);
+
+        await channel.send({ embeds: [replyEmbed], components: [button] });
         await interaction.reply({ content: 'sent!!', ephemeral: true });
     },
 };

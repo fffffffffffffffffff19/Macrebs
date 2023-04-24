@@ -1,7 +1,7 @@
 const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require('discord.js');
 
 module.exports = {
-    id: 'desabafoMenu',
+    id: 'desabafoButton',
     async execute(interaction) {
         const modal = new ModalBuilder()
             .setCustomId('desabafoModal')

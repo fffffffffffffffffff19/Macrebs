@@ -2,7 +2,7 @@ const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { sejaStaffEmbed } = require('../embeds/msgReply_Embed');
 
 module.exports = {
-    id: 'sejaStaffMenu',
+    id: 'sejaStaffButton',
     async execute(interaction) {
         const Button = new ActionRowBuilder().addComponents(new ButtonBuilder()
             .setLabel('Fazer Formulário')

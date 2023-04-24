@@ -12,6 +12,8 @@ module.exports = {
         const webhooks = await channel.fetchWebhooks();
         const webhook = await webhooks.first();
 
+        await interaction.reply({ content: 'Sugestão enviada!!', ephemeral: true });
+
         await channel.send({ content: `Sugestão enviada por: <@${user}>\nData de envio: ${epoch()}`, embeds: [sugestaoSendingEmbed(title, sugestao)] })
             .then((msg) => msg.startThread({
                 name: `"${title}"`,
@@ -20,7 +22,5 @@ module.exports = {
                 content: staffRole,
                 threadId: thread.id,
             })));
-
-        await interaction.reply({ content: 'Sugestão enviada!!', ephemeral: true });
     },
 };

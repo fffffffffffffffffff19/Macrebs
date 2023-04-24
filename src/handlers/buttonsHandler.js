@@ -11,7 +11,7 @@ module.exports = (client) => {
 
     const buttonsPaths = path.join(__dirname, '../commands/');
     const buttonsDirs = fs.readdirSync(buttonsPaths);
-    const list = ['pedirParceriasButton'];
+    const list = ['pedirParceriasButton, ajudaButton, denunciaButton, desabafoButton, duvidaButton'];
     const paths = [];
 
     for (const dirs of buttonsDirs) {

@@ -1,8 +1,8 @@
 const { ChannelType, ActionRowBuilder, ButtonBuilder, ComponentType, ButtonStyle } = require('discord.js');
-const { duvidaEmbed } = require('../embeds/ticketReply_Embed');
+const { ajudaEmbed } = require('../embeds/ticketReply_Embed');
 
 module.exports = {
-    id: 'duvidaMenu',
+    id: 'ajudaButton',
     async execute(interaction) {
         const moderacaoRole = await interaction.guild.roles.cache.get('936600289539145751');
         const channel = await interaction.guild.channels.cache.get('1019077752390942792'); // mainChannel: 1019077752390942792 / setupChannel: 960641940125261874
@@ -12,10 +12,10 @@ module.exports = {
             .setLabel('Fechar Ticket')
             .setStyle(ButtonStyle.Danger));
 
-        await channel.threads.create({ name: '︰dúvida-open︰', type: ChannelType.PrivateThread, autoArchiveDuration: 60 }).then(async (privateThread) => {
+        await channel.threads.create({ name: '︰ajuda-open︰', type: ChannelType.PrivateThread, autoArchiveDuration: 60 }).then(async (privateThread) => {
             await interaction.reply({ content: `* *Um ticket foi criado para o seu atendimento, se direcione para o canal <#${privateThread.id}>* *`, ephemeral: true });
             await privateThread.members.add(interaction.user.id);
-            await privateThread.send({ content: ping, embeds: [duvidaEmbed(interaction)], components: [panelButtons] }).then(async (button) => {
+            await privateThread.send({ content: ping, embeds: [ajudaEmbed(interaction)], components: [panelButtons] }).then(async (button) => {
                 const filter = async (buttonClick) => buttonClick.user.id === interaction.user.id || buttonClick.member.roles.cache.has(moderacaoRole.id) || interaction.user.id === '249955734958243840';
                 const collector = await button.createMessageComponentCollector({ filter, componentType: ComponentType.Button, time: 1500000 }); // 1500000 = 25minutos
                 const onButtonClick = () => collector.stop('buttonClick');

@@ -16,9 +16,12 @@ module.exports = {
         ];
         const random = Math.floor(Math.random() * 8);
         const embedImage = list[random];
-        const channel = await interaction.guild.channels.cache.get('1051633625159962674');
+        const interactionUser = interaction.user;
+        const channel = await interaction.guild.channels.cache.get('1051633625159962674'); // spamChannel: 960641940125261874 / mainChannel: 1051633625159962674
         const tituloDesabafo = await interaction.fields.getTextInputValue('tituloDesabafo');
         const desabafo = await interaction.fields.getTextInputValue('textoDesabafo');
+
+        await interaction.reply({ content: 'Texto enviado com sucesso. Obgda por desabafar :3', ephemeral: true });
 
         await channel.send({ content: `Título: "**${tituloDesabafo}**"\nData de envio: ${epoch()}\n*Quer enviar o seu anonimamente? Basta checar em <#1019077752390942792>.*`, embeds: [desabafoEmbed(desabafo, embedImage)] })
             .then((msg) => msg.startThread({
@@ -26,9 +29,11 @@ module.exports = {
                 autoArchiveDuration: 60,
             }).catch(async () => {
                 await msg.delete();
-                await interaction.reply({ content: 'Houve um erro ao enviar o seu texto, comunique um staff sobre o acontecimento. "Erro ao enviar a mensagem."', ephemeral: true });
+                await interactionUser.send({ content: 'Houve um erro ao enviar o seu texto, comunique um staff sobre o acontecimento. "Erro ao enviar a mensagem."', ephemeral: true })
+                    .catch(async () => {
+                        const errorLog = await interaction.guild.channels.cache.get('1100077156559769701');
+                        await errorLog.send({ content: `Erro ao enviar mensagem na dm.\nUsuário: <@${interaction.user.id}>\nComando usado: ${interaction.customId}` });
+                    });
             }));
-
-        await interaction.reply({ content: 'Texto enviado com sucesso. Obgda por desabafar :3', ephemeral: true });
     },
 };

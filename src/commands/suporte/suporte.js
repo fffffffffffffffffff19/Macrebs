@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const replyEmbed = require('./embeds/reply_Embed');
 
 module.exports = {
@@ -7,34 +7,25 @@ module.exports = {
         .setDescription('Mensagens do suporte'),
     async execute(interaction) {
         const channel = await interaction.guild.channels.cache.get('1019077752390942792'); // spamChannel: 960641940125261874 / mainChannel: 1019077752390942792
-        const menu = new ActionRowBuilder()
-            .addComponents(new StringSelectMenuBuilder()
-                .setCustomId('suporte')
-                .setPlaceholder('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱')
-                .addOptions(
-                    {
-                        label: '🌌・Denuncia',
-                        description: 'Canal para criar denuncias.',
-                        value: 'denunciaMenu',
-                    },
-                    {
-                        label: '💠・Ajuda',
-                        description: 'Precisa de ajuda com alguma coisa ?',
-                        value: 'ajudaMenu',
-                    },
-                    {
-                        label: '🧊・Dúvida',
-                        description: 'Tire dúvidas de assuntos do servidor.',
-                        value: 'duvidaMenu',
-                    },
-                    {
-                        label: '📘・Desabafo',
-                        description: 'Mande o seu desabafo anonimamente.',
-                        value: 'desabafoMenu',
-                    },
-                ));
+        const ajudaButton = new ButtonBuilder()
+            .setCustomId('ajudaButton')
+            .setLabel('・Ajuda')
+            .setStyle(ButtonStyle.Secondary);
+        const denunciaButton = new ButtonBuilder()
+            .setCustomId('denunciaButton')
+            .setLabel('Denuncia')
+            .setStyle(ButtonStyle.Secondary);
+        const duvidaButton = new ButtonBuilder()
+            .setCustomId('duvidaButton')
+            .setLabel('Dúvida')
+            .setStyle(ButtonStyle.Secondary);
+        const desabafoButton = new ButtonBuilder()
+            .setCustomId('desabafoButton')
+            .setLabel('Desabafo・')
+            .setStyle(ButtonStyle.Secondary);
+        const buttons = new ActionRowBuilder().addComponents(ajudaButton, denunciaButton, duvidaButton, desabafoButton);
 
-        await channel.send({ embeds: [replyEmbed], components: [menu] });
+        await channel.send({ embeds: [replyEmbed], components: [buttons] });
         await interaction.reply({ content: 'sent!!', ephemeral: true });
     },
 };
