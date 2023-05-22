@@ -2,7 +2,7 @@ const { Events } = require('discord.js');
 const { sequelize, DataTypes } = require('../database/database');
 const msgPartnerDB = require('../database/models/msgPartner')(sequelize, DataTypes);
 const partnerDB = require('../database/models/partner')(sequelize, DataTypes);
-const { PartnerLeave } = require('../commands/new-partner/embeds/partner_Embed');
+const { PartnerLeave } = require('../commands/new_partner/embeds/partner_Embed');
 
 module.exports = {
     name: Events.GuildMemberRemove,

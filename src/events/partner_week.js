@@ -2,7 +2,7 @@ const { Events } = require('discord.js');
 const { sequelize, DataTypes } = require('../database/database');
 const partnerDB = require('../database/models/partner')(sequelize, DataTypes);
 const msgPartnerDB = require('../database/models/msgPartner')(sequelize, DataTypes);
-const { PartnerExpired } = require('../commands/new-partner/embeds/partner_Embed');
+const { PartnerExpired } = require('../commands/new_partner/embeds/partner_Embed');
 const { timeWeek } = require('../tools/time');
 const { guildId } = require('../../config');
 

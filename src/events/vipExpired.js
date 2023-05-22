@@ -1,7 +1,7 @@
 const { Events } = require('discord.js');
 const { sequelize, DataTypes } = require('../database/database');
 const vipStatusDB = require('../database/models/vipstatus')(sequelize, DataTypes);
-const { VipExpired } = require('../commands/setvip/embeds/setvip_Embed');
+const { VipExpired } = require('../commands/set_vip/embeds/setvip_Embed');
 const { timeMonth } = require('../tools/time');
 const { guildId } = require('../../config');
 
