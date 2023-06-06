@@ -14,17 +14,21 @@ module.exports = {
             .setStyle(ButtonStyle.Secondary);
         const parceriaButton = new ButtonBuilder()
             .setCustomId('parceriaButton')
-            .setLabel('・Moderação')
+            .setLabel('Parceria')
             .setStyle(ButtonStyle.Secondary);
         const recepcaoButton = new ButtonBuilder()
-            .setCustomId('Button')
-            .setLabel('・Moderação')
+            .setCustomId('recepcaoButton')
+            .setLabel('Recepção')
+            .setStyle(ButtonStyle.Secondary);
+        const adminButton = new ButtonBuilder()
+            .setCustomId('adminButton')
+            .setLabel('Admin・')
             .setStyle(ButtonStyle.Secondary);
 
         const buttons = new ActionRowBuilder()
-            .addComponents(moderacaoButton, parceriaButton, recepcaoButton);
+            .addComponents(moderacaoButton, parceriaButton, recepcaoButton, adminButton);
 
-        await channel.send({ embeds: [replyEmbed], components: [buttons] });
+        await channel.send({ embeds: [replyEmbed], components: [buttons] }); // terminar de fazer, por os botões para ser escutado
         await interaction.reply({ content: 'sent!!!', ephemeral: true });
     },
 };
