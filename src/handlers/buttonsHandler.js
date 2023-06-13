@@ -1,10 +1,11 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Events, Collection } = require('discord.js');
-const { log } = require('../embeds/selectedMenuHandler/logChannel_Embed');
+const { log } = require('../jsons/selectedMenuHandler/logChannel_Embed');
 const { sequelize, DataTypes } = require('../database/database');
 const commandDelay = require('../database/models/commandDelay')(sequelize, DataTypes);
 const { epoch } = require('../tools/time');
+const logError = require('../logs/buttonsLogs');
 
 module.exports = (client) => {
     client.buttonsfiles = new Collection();
@@ -51,35 +52,36 @@ module.exports = (client) => {
 
         if (!validation) {
             try {
+                return await buttons.execute(interaction);
+            } catch (error) {
+                await logError(interaction, error);
+                return interaction.reply({ content: '*Putsss!!* Tive um problema ao executar esse botão, caso aconteça novamente, informe um staff do problema. \n**"Erro ao executar o botão"**', ephemeral: true });
+            }
+        }
+
+        const channel = await interaction.guild.channels.cache.get('1091747526262136922');
+        const userId = await interaction.user.id;
+        const useDelay = await commandDelay.findOne({ where: { memberId: userId } });
+
+        const database = async (clear) => {
+            if (clear) return setTimeout(() => commandDelay.destroy({ where: { memberId: userId } }), 30000);
+
+            await commandDelay.create({ memberId: userId });
+            setTimeout(() => commandDelay.destroy({ where: { memberId: userId } }), 30000);
+        };
+
+        await channel.send({ embeds: [log(interaction, epoch(), interaction.customId)] });
+
+        if (useDelay !== null) {
+            await interaction.reply({ content: '*Eii!!* Espere um pouco antes de executar novamente. **30s** >:(', ephemeral: true });
+            database(true);
+        } else {
+            try {
+                await database(false);
                 await buttons.execute(interaction);
             } catch (error) {
-                console.error(error);
-                await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-            }
-        } else {
-            const channel = await interaction.guild.channels.cache.get('1091747526262136922');
-            const userId = await interaction.user.id;
-            const useDelay = await commandDelay.findOne({ where: { memberId: userId } });
-
-            const database = async (clear) => {
-                if (clear) return setTimeout(() => commandDelay.destroy({ where: { memberId: userId } }), 30000);
-
-                await commandDelay.create({ memberId: userId });
-                setTimeout(() => commandDelay.destroy({ where: { memberId: userId } }), 30000);
-            };
-
-            await channel.send({ embeds: [log(interaction, epoch(), interaction.customId)] });
-            if (useDelay !== null) {
-                await interaction.reply({ content: '*Eii!!* Espere um pouco antes de executar novamente. **30s** >:(', ephemeral: true });
-                database(true);
-            } else {
-                try {
-                    await database(false);
-                    await buttons.execute(interaction);
-                } catch (error) {
-                    console.error(error);
-                    await interaction.reply({ content: '*Putsss!!* Tive um problema ao executar esse botão, caso aconteça novamente, informe um staff do problema. \n**"Erro ao executar o botão"**', ephemeral: true });
-                }
+                await logError(interaction, error);
+                await interaction.reply({ content: '*Putsss!!* Tive um problema ao executar esse botão, caso aconteça novamente, informe um staff do problema. \n**"Erro ao executar o botão"**', ephemeral: true });
             }
         }
     });

@@ -1,5 +1,5 @@
 const { Events } = require('discord.js');
-const { WelcomeChat } = require('../embeds/eventsEmbed/welcome_Embed');
+const { WelcomeChat } = require('../jsons/eventsEmbed/welcome_Embed');
 const { sequelize, DataTypes } = require('../database/database');
 const joinedRecently = require('../database/models/joinedRecently')(sequelize, DataTypes);
 

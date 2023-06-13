@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Events, Collection } = require('discord.js');
+const logError = require('../logs/commandsLogs');
 
 module.exports = async (client) => {
     client.commands = new Collection();
@@ -36,8 +37,8 @@ module.exports = async (client) => {
         try {
             await command.execute(interaction);
         } catch (error) {
-            console.error(error);
-            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+            await logError(interaction, error);
+            await interaction.reply({ content: 'Houve um erro ao rodar o comando.', ephemeral: true });
         }
     });
 };

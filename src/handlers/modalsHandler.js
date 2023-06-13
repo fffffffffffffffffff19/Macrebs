@@ -1,6 +1,7 @@
 const { Events, Collection } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
+const logError = require('../logs/modalsLogs');
 
 module.exports = (client) => {
     client.modalsMenu = new Collection();
@@ -40,8 +41,8 @@ module.exports = (client) => {
         try {
             await modals.execute(interaction);
         } catch (error) {
-            console.error(error);
-            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+            await logError(interaction, error);
+            await interaction.reply({ content: 'Houve um erro ao usar este comando.', ephemeral: true });
         }
     });
 };

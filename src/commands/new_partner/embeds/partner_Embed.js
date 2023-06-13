@@ -1,4 +1,4 @@
-const { footerIcon, footerText } = require('../../../embeds/footer');
+const { footerIcon, footerText } = require('../../../jsons/footer');
 
 const imagemBannerDefault = 'https://i.imgur.com/CmQk6Vj.png';
 

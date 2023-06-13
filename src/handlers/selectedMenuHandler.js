@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Events, Collection } = require('discord.js');
-const { log } = require('../embeds/selectedMenuHandler/logChannel_Embed');
+const { log } = require('../jsons/selectedMenuHandler/logChannel_Embed');
 const { sequelize, DataTypes } = require('../database/database');
 const commandDelay = require('../database/models/commandDelay')(sequelize, DataTypes);
 const { epoch } = require('../tools/time');

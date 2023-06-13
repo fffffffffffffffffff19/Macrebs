@@ -1,4 +1,4 @@
-const { footerText, footerIcon } = require('../../../embeds/footer');
+const { footerText, footerIcon } = require('../../../jsons/footer');
 
 module.exports = {
     AllInvites: (member, uses, codes) => ({
