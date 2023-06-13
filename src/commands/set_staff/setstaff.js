@@ -26,7 +26,7 @@ module.exports = {
         const separator = await interaction.guild.roles.cache.find((roleFind) => roleFind.id == '1041755217974280222'); // Cargo para separar categorias "՞ ⸝⸝>  ̫ <⸝⸝ ՞ . : ｡✿ ʚ Administração ɞ ♡"
         const vipRole = await interaction.guild.roles.cache.find((roleFind) => roleFind.id == '943511293036486747'); // Cargo vip que é recompensa "₊˚꒰⭐ Macrabizant ⭐꒱・₊"
         const channelStaff = await interaction.guild.channels.cache.get('939134128668946472');
-        const schiavonDM = await interaction.guild.members.cache.get('249955734958243840');
+        const logChannel = await interaction.guild.channels.cache.find('1118168060944191628');
 
         const msgs = {
             send: `*Olá <@${memberOption.user.id}>, seja bem vindo(a/e) a staff!!*\n*Irei pedir com gentileza que dirija-se ao canal <#1021640639974211645> para ler o nosso guia dependendo de sua função.*`,
@@ -39,8 +39,8 @@ module.exports = {
         await memberOption.roles.add(separator);
         await memberOption.roles.add(vipRole);
 
-        await memberOption.send({ content: msgs.send }).catch(() => schiavonDM.send({ content: msgs.error }));
-        await interaction.reply({ content: 'Cargo foi dado com sucesso.', ephemeral: true });
+        await memberOption.send({ content: msgs.send }).catch(() => logChannel.send({ content: msgs.error }));
         await channelStaff.send({ content: msgs.channelStaffSend });
+        await interaction.reply({ content: 'Sent!!', ephemeral: true });
     },
 };
