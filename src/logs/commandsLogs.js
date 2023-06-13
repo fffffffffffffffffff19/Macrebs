@@ -5,8 +5,6 @@ module.exports = async (interaction, error) => {
     const command = { name: await interaction.commandName, channelId: await interaction.channelId };
     const commandRunner = { name: await interaction.user.username, id: await interaction.user.id, avatar: await interaction.user.avatar };
 
-    console.error(error);
-
     const embed = new EmbedBuilder()
         .setTitle('Houve um erro ao executar um comando.')
         .setDescription(`Comando: **<** \`\`/${command.name}\`\` **>**\nQuem tentou rodar: **<** <@${commandRunner.id}> **>**\nCanal executado: **<** <#${command.channelId}> **>**`)

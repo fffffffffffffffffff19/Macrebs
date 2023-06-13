@@ -5,8 +5,6 @@ module.exports = async (interaction, error) => {
     const button = { name: await interaction.customId, channelId: await interaction.channelId };
     const buttonRunner = { name: await interaction.user.username, id: await interaction.user.id, avatar: await interaction.user.avatar };
 
-    console.error(error);
-
     const embed = new EmbedBuilder()
         .setTitle('Houve um erro ao executar um botão.')
         .setDescription(`Botão: **<** \`\`${button.name}\`\` **>**\nQuem tentou rodar: **<** <@${buttonRunner.id}> **>**\nCanal executado: **<** <#${button.channelId}> **>**`)
