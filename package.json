@@ -4,7 +4,7 @@
   "description": "A oficial Macrebs discord bot.",
   "main": "app.js",
   "scripts": {
-    "start": "cls && nodemon app.js"
+    "start": "cls && npm update && node slashBuilder.js && nodemon app.js"
   },
   "author": "!              fff/Schiavon#4844",
   "license": "ISC",

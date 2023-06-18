@@ -20,8 +20,12 @@ module.exports = {
             .setCustomId('boostingButton')
             .setLabel('Boosting・')
             .setStyle(ButtonStyle.Secondary);
+        const resgatarButton = new ButtonBuilder()
+            .setCustomId('resgatarButton')
+            .setLabel('Resgatar')
+            .setStyle(ButtonStyle.Danger);
 
-        const button = new ActionRowBuilder().addComponents(invitesButton, interacaoButton, boostingButton);
+        const button = new ActionRowBuilder().addComponents(invitesButton, interacaoButton, boostingButton, resgatarButton);
 
         await channel.send({ embeds: [replyEmbed], components: [button] });
         await interaction.reply({ content: 'sent!!', ephemeral: true });

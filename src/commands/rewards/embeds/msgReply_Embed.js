@@ -36,4 +36,16 @@ module.exports = {
             icon_url: `${footerIcon}`,
         },
     }),
+
+    resgatarEmbed: () => ({
+        color: 0xffffff,
+        description: 'Selecione a categoria de prêmio que queira resgatar.\n*(__Abusos na solicitação ocasionará em punições.__)*',
+        image: {
+            url: 'https://i.imgur.com/4j1Eor8.jpeg',
+        },
+        footer: {
+            text: `${footerText}`,
+            icon_url: `${footerIcon}`,
+        }
+    })
 };
