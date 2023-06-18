@@ -5,7 +5,7 @@ module.exports = {
     once: false,
     async execute(oldMember, newMember) {
         if (!oldMember.roles.cache.size == newMember.roles.cache.size) return;
-        if (oldMember.roles.cache.has('961379767339339806') && !newMember.roles.cache.has('961379767339339806')) return;
+        if (oldMember.roles.cache.has('913256048528334888') && !newMember.roles.cache.has('913256048528334888')) return;
 
         const boostChannel = await newMember.guild.channels.cache.get('889683545407238234');
         await newMember.send({ content: `***Obrigada pelo boost!!***\n*Visite o canal de __<#889683545407238234>__ para resgatar os seus prêmios.*` }).catch((e) => console.log(e));
