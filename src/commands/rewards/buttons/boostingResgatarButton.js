@@ -1,5 +1,5 @@
 const { ChannelType, ActionRowBuilder, ButtonBuilder, ComponentType, ButtonStyle } = require('discord.js');
-const resgatarEmbed = require('../embeds/ticketReply_Embed');
+const { resgatar } = require('../embeds/ticketReply_Embed');
 
 module.exports = {
     id: 'boostingResgatarButton',
@@ -18,7 +18,7 @@ module.exports = {
         await rewardChannel.threads.create({ name: '︰resgatar-open︰', type: ChannelType.PrivateThread, autoArchiveDuration: 60 }).then(async (privateThread) => {
             await interaction.reply({ content: `* *Um ticket foi criado para o seu atendimento, se direcione para o canal <#${privateThread.id}>* *`, ephemeral: true });
             await privateThread.members.add(interaction.user.id);
-            await privateThread.send({ content: ping, embeds: [resgatarEmbed(interaction)], components: [panelButtons] }).then(async (button) => {
+            await privateThread.send({ content: ping, embeds: [resgatar(interaction)], components: [panelButtons] }).then(async (button) => {
                 const filter = async (buttonClick) => buttonClick.user.id === interaction.user.id || buttonClick.member.roles.cache.has(ownersRole.id) || interaction.user.id === '249955734958243840';
                 const collector = await button.createMessageComponentCollector({ filter, componentType: ComponentType.Button, time: 1500000 }); // 1500000 = 25minutos
                 const onButtonClick = () => collector.stop('buttonClick');
